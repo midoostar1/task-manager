@@ -126,7 +126,7 @@
                         MyTask!! <br />
                         <span style="color: hsl(218, 81%, 75%)">Get more done</span>
                     </h1>
-                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    <p class="mb-4 opacity-70 fst-italic" style="color: hsl(218, 81%, 85%)">
                         Start planning your week, your Day or your next goal right here. type it down, shedule it. Dont stop
                         .....Start getting more done everyday
                     </p>
@@ -141,6 +141,9 @@
 
                             <div class="text-center mb-4">
                                 <h4>Login</h4>
+
+                                <div class="alert alert-danger m-3" role="alert" th:text="${invalid}" th:if="${invalid}"></div>
+
                             </div>
 
                             <form th:action="@{/signup}" th:method="post" th:object="${user}">
@@ -149,39 +152,37 @@
 
                                     <!-- Email input -->
                                     <div class="form-outline mb-4">
-                                        <input type="text"  th:field="*{firstName}" id="firstName" class="form-control" />
+                                        <input type="text" required  th:field="*{firstName}" id="firstName" class="form-control" />
                                         <label class="form-label"  for="firstName">First name</label>
                                     </div>
 
                                     <!-- Password input -->
                                     <div class="form-outline mb-4">
-                                        <input type="text"  th:field="*{firstName}" id="lastName" class="form-control" />
+                                        <input type="text" required   th:field="*{lastName}" id="lastName" class="form-control" />
                                         <label class="form-label" for="lastName">Last name</label>
                                     </div>
 
 
 
                                     <div class="form-outline mb-4">
-                                        <input type="text"  th:field="*{username}" id="username" class="form-control" />
+                                        <input type="text" required th:field="*{username}" id="username" class="form-control" />
                                         <label class="form-label" for="username">username</label>
                                     </div>
 
 
 
                                     <div class="form-outline mb-4">
-                                        <input type="email"  th:field="*{email}" id="email" class="form-control" />
+                                        <input type="email" required  th:field="*{email}" id="email" class="form-control" />
                                         <label class="form-label" for="email">Email</label>
                                     </div>
 
 
                                     <div class="form-outline mb-4">
-                                        <input type="password"   th:field="*{password}" id="form3Example4" class="form-control" />
+                                        <input type="password" required   th:field="*{password}" id="form3Example4" class="form-control" />
                                         <label class="form-label" for="form3Example4">Password</label>
-                                        <ul class="text-danger" th:each="error: ${#fields.errors('password')}">
-                                            <li th:each="message : ${error.split(',')}">
-                                                <p class="error-message" th:text="${message}"></p>
-                                            </li>
-                                        </ul>
+                                        <br>
+                                        <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and special characters and at least 1 integer, and must not contain spaces, or emoji.</small>
+
                                     </div>
 
 
