@@ -212,7 +212,7 @@
 
                 <div class="">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
                         <i class="bi bi-blockquote-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
@@ -284,7 +284,7 @@
 
 <!--                         **********************************                   -->
                                             <div class="action row w-80">
-                                              <div class="col">
+                                              <div th:if="${task.isIsCompleted() == false}" class="col">
                                                   <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Update</a>
                                               </div>
                                                <div class="col">
@@ -296,7 +296,7 @@
 
 
 
-                                               <div th:if="${task.isIsScheduled() == false}" class="col">
+                                               <div th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" class="col">
                                                    <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
 
                                                </div>
