@@ -126,43 +126,15 @@
 
         <ul class="list-unstyled components">
 
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
+
             <li>
-                <a href="#">About</a>
+                <a href="/about">About</a>
             </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
+
             <li>
                 <a href="/task">Manage Tasks</a>
             </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
+
         </ul>
 
 
@@ -198,8 +170,8 @@
 
                 <div class="">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
+                        <i class="bi bi-blockquote-left"></i>
                         <span>Toggle Sidebar</span>
                     </button>
                 </div>
@@ -242,46 +214,100 @@
 
 
                         <!--        ************Start of card section************-->
-                        <div class="grey-bg " style="z-index: auto">
-                            <section id="minimal-statistics">
+                        <div class="grey-bg mt-1" style="z-index: auto; width: 80vw; height: 100vh">
 
+                        <div class="row w-100">
 
-                                <div class="row">
+                            <div class="col-md-6 col-sm-11 mt-3">
+                                <div class="card">
 
-                                    <div class="col-xl-3 col-sm-6 col-12">
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div class="card-body">
-                                                    <div class="media d-flex">
-                                                        <div class="media-body text-left">
-                                                            <h3 class="warning">156</h3>
-                                                            <span>New Comments</span>
-                                                        </div>
-                                                        <div class="align-self-center">
-                                                            <i class="icon-bubbles warning font-large-2 float-right"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="progress mt-1 mb-0" style="height: 7px;">
-                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
+                                    <div class="card-header text-center"><h5> User Details</h5></div>
+
+                                    <form th:action="@{/admin/saveEdit}" method="POST">
+
+                                        <div class="form-group row w-100 m-1">
+                                            <label class="col-form-label col-sm-4 text-center">Id</label>
+                                            <div class="col-8">
+                                                <input name="id" th:value="${user.id}" readonly type="number"
+                                                       class="form-control">
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group row w-100 m-1">
+                                            <label class="col-form-label col-sm-4 text-center">Firstname</label>
+                                            <div class="col-8">
+                                                <input name="firstName" th:value="${user.firstName}" class="form-control" size="16"
+                                                       type="text">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row w-100 m-1">
+                                            <label class="col-form-label col-sm-4 text-center"> Lastname</label>
+                                            <div class="col-8">
+                                                <input name="lastName" th:value="${user.lastName}" type="text"
+                                                       class=" form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row w-100 m-1">
+                                            <label class="col-form-label col-sm-4 text-center">Username</label>
+                                            <div class="col-8">
+                                                <input name="username" th:value="${user.username}" type="text" class="form-control">
+                                            </div>
+                                        </div>
 
+
+                                        <div class="form-group row w-100 m-1">
+                                            <label class="col-form-label col-sm-4 text-center">Email</label>
+                                            <div class="col-8">
+                                                <input name="email" th:value="${user.email}" type="text" class="form-control">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row w-100 m-1    ">
+                                            <label class="col-form-label col-sm-4 text-center">password</label>
+                                            <div class="col-8">
+                                                <input name="password" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="text-center m-1">
+                                            <button class="btn btn-primary">update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-11 mt-3">
+
+
+                                <div class="card ">
+                                    <div class="card-header text-center">
+                                        <h5>Tasks summary</h5>
+                                    </div>
+                                    <table class="table  table-advance ">
+                                        <tbody>
+                                        <tr>
+                                            <th></th>
+                                            <th><i class="icon_profile"></i> Description</th>
+                                            <th><i class="icon_cogs"></i> Action</th>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-table"></i></td>
+                                            <td ></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
 
                                 </div>
 
-
-
-                            </section>
-
+                            </div>
 
                         </div>
 
 
                         <!--*****************End of card section******************--->
-
+</div>
 
 
 
