@@ -31,11 +31,12 @@ public class User {
    @Column(nullable = false, unique = true)
     private String email;
 
-   @Column(nullable = false)
+
+
     private String password;
 
     @Column(name = "profile_photo")
-    private String profilePhoto;
+    private String profilePhoto = "https://cdn.filestackcontent.com/SftfgsETQmEGDT0gfjsq";
 
 
 

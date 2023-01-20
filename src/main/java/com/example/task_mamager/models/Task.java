@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -31,12 +32,21 @@ public class Task {
     private Category category;
 
     @Column(name = "created_on")
-    private Date dateCreated;
+    private LocalDate dateCreated;
 
-    private Date dueDate;
+    private LocalDate dueDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
 
+    public Task(String name, String description, boolean isCompleted, boolean isScheduled, Category category, LocalDate dateCreated, User owner) {
+        this.name = name;
+        this.description = description;
+        IsCompleted = isCompleted;
+        IsScheduled = isScheduled;
+        this.category = category;
+        this.dateCreated = dateCreated;
+        this.owner = owner;
+    }
 }
