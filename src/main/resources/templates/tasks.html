@@ -1,152 +1,407 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+
+
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>[Template] Sample Inner Page</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title>register</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="/img/favicon.png" rel="icon">
-  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="/css/main.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/css/post.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/task.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: PhotoFolio - v1.2.0
-  * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <style>
+
+        .background-radial-gradient {
+            background-color: hsl(218, 41%, 15%);
+            background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+            radial-gradient(1250px circle at 100% 100%,
+                    hsl(218, 41%, 45%) 15%,
+                    hsl(218, 41%, 30%) 35%,
+                    hsl(218, 41%, 20%) 75%,
+                    hsl(218, 41%, 19%) 80%,
+                    transparent 100%);
+            height: 100vh;
+            margin-top: 10vh;
+        }
+
+        #radius-shape-1 {
+            height: 220px;
+            width: 220px;
+            top: -60px;
+            left: -130px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+            margin-top: 15em;
+        }
+
+        #radius-shape-2 {
+            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+            bottom: -400px;
+            right: -400px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+            margin-top: 2em;
+        }
+
+        .bg-glass {
+            background-color: hsla(0, 10%, 6%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+
+
+    </style>
+
+
+    <!-- =======================================================
+    * Template Name: PhotoFolio - v1.2.0
+    * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="/img/logo.png" alt=""> -->
-        <i class="bi bi-camera"></i>
-        <h1>PhotoFolio</h1>
-      </a>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="gallery.html">Nature</a></li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Sub Menu 1</a></li>
-                  <li><a href="#">Sub Menu 2</a></li>
-                  <li><a href="#">Sub Menu 3</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav><!-- .navbar -->
 
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-    </div>
-  </header><!-- End Header -->
 
-  <main id="main" data-aos="fade" data-aos-delay="1500">
 
-    <!-- ======= End Page Header ======= -->
-    <div class="page-header d-flex align-items-center">
-      <div class="container position-relative">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h2>Sample Inner Page</h2>
-            <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
 
-            <a class="cta-btn" href="contact.html">Available for hire</a>
-
-          </div>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
-      </div>
-    </div><!-- End Page Header -->
 
-    <section class="sample-page">
-      <div class="container" data-aos="fade-up">
+        <div id="userProfilePic" class="avatar avatar-lg" style="margin-left:4em">
+            <a class="w-100" href="#">
 
-        <p>
-          You can duplicate this sample page and create any number of inner pages you like!
-        </p>
+                <img style="width: 50px; margin-left: 1.2em" class="avatar-img  border  border-3  "
+                     th:src="${user.profilePhoto}" alt="">
 
-      </div>
-    </section>
+            </a>
 
-  </main><!-- End #main -->
+            <h5 class="p-2" style="margin-right:1px"><a href="/profile"
+                                                        th:text="${user.firstName}+' '+${user.lastName}"></a></h5>
+        </div>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+        <ul class="list-unstyled components">
+
+            <li>
+                <a th:href="@{/showTaskForm}">Create Task</a>
+            </li>
+
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task category</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a href="#">Work</a>
+                    </li>
+                    <li>
+                        <a href="#">Chores</a>
+                    </li>
+                    <li>
+                        <a href="#">Academic</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Finance</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Health</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Misc</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task Status</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li>
+                        <a href="#">Scheduled</a>
+                    </li>
+                    <li>
+                        <a href="#">Completed</a>
+                    </li>
+                    <li>
+                        <a href="#">Pending</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+
+        <nav class="text-center text-white">
+            <ul>
+                <!-- More links here... -->
+                <li class="text-white" style="list-style: none">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn btn-outline-light" style="margin-top: 8px">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
+
+    </nav>
+
+
+    </nav>
+    <!-- Page Content -->
+    <div id="content">
+
+
+
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="header d-flex align-items-center fixed-top">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+
+                <a href="/" class="logo d-flex align-items-center  me-auto me-lg-0">
+                    <!-- Uncomment the line below if you also wish to use an image logo -->
+                    <!-- <img src="/img/logo.png" alt=""> -->
+                    <i class="bi bi-journals"></i>
+                    <h1>MyTask</h1>
+                </a>
+
+                <div class="">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="bi bi-blockquote-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                </div>
+
+
+
+
+
+
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                    </ul>
+                </nav><!-- .navbar -->
+
+
+                <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+                <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+            </div>
+        </header><!-- End Header -->
+
+
+        <main id="main" data-aos="fade" data-aos-delay="1500">
+
+            <!-- ======= End Page Header ======= -->
+
+            <!-- Section: Design Block -->
+            <section class="background-radial-gradient overflow-hidden">
+
+
+                <div class="container-fluid">
+
+                        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong" style=""></div>
+                            <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
+
+
+                            <!--        ************Start of card section************-->
+                            <div class="grey-bg mt-1" style="z-index: auto; width: 80vw; height: 100vh">
+
+
+
+                                    <div  class="row w-100 g-1">
+
+
+
+                                        <div th:each="task:${tasks}" class="card text-center col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                            <div class="card-header">
+                                                <span th:if="${task.isIsCompleted() == true}" th:text="Completed"></span>
+                                                <span th:if="${task.isIsScheduled() == true}" th:text="Scheduled"></span>
+                                                <span th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" th:text="Pending"></span>
+                                            </div>
+                                            <div class="card-body">
+                                                <h3 th:if="${task.isIsCompleted() == true}" th:text="${task.getName()}" class="text-decoration-line-through"></h3>
+                                                <h3 th:if="${task.isIsCompleted() == false}" th:text="${task.getName()}"></h3>
+
+
+                                                <p th:text="${task.getDescription()}" class="card-text"></p>
+                                            </div>
+
+                                            <div th:if="${task.isIsScheduled() == true}">
+                                                <p >Due on: <span th:text="${task.getDueDate()}"></span></p>
+                                            </div>
+
+<!--                         **********************************                   -->
+                                            <div class="action row w-80">
+                                              <div class="col">
+                                                  <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Update</a>
+                                              </div>
+                                               <div class="col">
+                                                   <a onclick="return confirm('Are you sure you want delete?')"
+                                                      th:href="@{/deleteTask/{id}(id=${task.id})}"
+                                                      class="btn btn-danger"><i class="icon_close_alt2"></i>Delete</a>
+
+                                               </div>
+
+
+
+                                               <div th:if="${task.isIsScheduled() == false}" class="col">
+                                                   <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
+
+                                               </div>
+
+                                                <div th:if="${task.isIsCompleted() == false}" class="col">
+                                                    <a th:href="@{/complete Task/{id}(id=${task.id})}" class="btn btn-outline-light">Complete</a>
+
+                                                </div>
+
+                                            </div>
+
+<!--                       ******************************************                     -->
+
+                                            <div class="card-footer text-muted">
+
+                                                <div th:if="${task.isIsCompleted() == true}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+
+                                                <div th:if="${task.isIsScheduled() == true}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+
+                                                <div th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+
+
+                            </div>
+
+
+                            <!--*****************End of card section******************--->
+
+
+
+
+
+                        </div>
+                    </div>
+
+            </section>
+            <!-- Section: Design Block -->
+
+
+        </main><!-- End #main -->
+
+
+        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+        <div id="preloader">
+            <div class="line"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
     </div>
-  </footer><!-- End Footer -->
+</div>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader">
-    <div class="line"></div>
-  </div>
 
-  <!-- Vendor JS Files -->
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/vendor/aos/aos.js"></script>
-  <script src="/vendor/php-email-form/validate.js"></script>
+<!-- Vendor JS Files -->
 
-  <!-- Template Main JS File -->
-  <script src="/js/main.js"></script>
+
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/php-email-form/validate.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Popper.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+<script src="/js/task.js"></script>
+
 
 </body>
 

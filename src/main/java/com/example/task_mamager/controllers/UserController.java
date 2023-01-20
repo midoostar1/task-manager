@@ -4,6 +4,8 @@ package com.example.task_mamager.controllers;
 import com.example.task_mamager.models.User;
 import com.example.task_mamager.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,10 @@ public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
+
+   public User loggedInUser(){
+    return    (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+   }
 
     public boolean isValidPassword(String password) {
 
@@ -98,7 +104,9 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(Model model){
+       User user = loggedInUser();
+        model.addAttribute("user",user);
         return "profile";
     }
 
