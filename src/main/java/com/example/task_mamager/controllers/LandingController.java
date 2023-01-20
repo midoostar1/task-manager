@@ -15,9 +15,6 @@ public class LandingController {
 
     @GetMapping("/")
     public String showLanding(){
-    String password = "password1234" ;
-    String encode = passwordEncoder.encode(password);
-        System.out.println(encode);
 
         return "index";
     }
