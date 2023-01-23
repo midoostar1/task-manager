@@ -270,16 +270,33 @@
                                         <h5>Tasks summary</h5>
                                     </div>
                                     <table class="table  table-advance ">
-                                        <tbody>
+<thead>
                                         <tr>
-                                            <th></th>
-                                            <th><i class="icon_profile"></i> Description</th>
-                                            <th><i class="icon_cogs"></i> Action</th>
+
+                                            <th><i class="icon_profile"></i> Status</th>
+                                            <th><i class="icon_cogs"></i>Total</th>
+                                            <th><i class="icon_profile"></i>Action</th>
+
+                                        </tr>
+</thead>
+                                        <tbody class="text-white">
+                                        <tr>
+                                            <td><i class="fa fa-table">Completed</i></td>
+                                            <td th:text="${completed}"><i class="fa fa-table"></i></td>
+                                            <td><i class="fa fa-table"></i><a href=""></a>View</td>
+
                                         </tr>
                                         <tr>
-                                            <td><i class="fa fa-table"></i></td>
-                                            <td ></td>
-                                            <td></td>
+                                            <td><i class="fa fa-table">Scheduled</i></td>
+                                            <td th:text="${scheduled}"><i class="fa fa-table"></i></td>
+                                            <td><i class="fa fa-table"></i><a href="">View</a></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-table"></i>Pending</td>
+                                            <td th:text="${pending}"><i class="fa fa-table"></i></td>
+                                            <td><i class="fa fa-table"></i><a href="">View</a></td>
+
                                         </tr>
                                         </tbody>
                                     </table>
