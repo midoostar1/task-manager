@@ -279,7 +279,7 @@
                                             </div>
 
                                             <div th:if="${task.isIsScheduled() == true}">
-                                                <p >Due on: <span th:text="${task.getDueDate()}"></span></p>
+                                                <p >Due on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDueDate()}"></span></p>
                                             </div>
 
 <!--                         **********************************                   -->
@@ -297,12 +297,12 @@
 
 
                                                <div th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" class="col">
-                                                   <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
+                                                   <a th:href="@{/scheduleTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
 
                                                </div>
 
                                                 <div th:if="${task.isIsCompleted() == false}" class="col">
-                                                    <a th:href="@{/complete Task/{id}(id=${task.id})}" class="btn btn-outline-light">Complete</a>
+                                                    <a th:href="@{/completeTask/{id}(id=${task.id})}" class="btn btn-outline-light">Complete</a>
 
                                                 </div>
 
