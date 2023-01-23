@@ -87,11 +87,11 @@ public class TaskController {
     @GetMapping("/completeTask/{id}")
     public String completeTask(@PathVariable("id") long id) {
         Task task = taskService.findById(id);
-        if(task.isIsScheduled()){
-            task.setIsScheduled(false);
+        if(task.isScheduled()){
+            task.setScheduled(false);
             task.setDueDate(null);
         }
-        task.setIsCompleted(true);
+        task.setCompleted(true);
         taskService.save(task);
         return "redirect:/task";
     }
@@ -109,16 +109,28 @@ public class TaskController {
     @PostMapping("/scheduleTask")
     public String schedule(
             @RequestParam("date") LocalDate date,
-            @RequestParam("id") long id) {
+            @RequestParam("id") long id,
+            Model model) {
+
 
         Task task = taskService.findById(id);
+        if(date.isBefore(LocalDate.now())){
+            model.addAttribute("task", task);
+          model.addAttribute("pastDate","Due date cannot be in the past.");
+          return "scheduleTask";
+        }
+
         task.setDueDate(date);
-        task.setIsScheduled(true);
+        task.setScheduled(true);
         taskService.save(task);
 
         return "redirect:/task";
     }
 
+
+
+
+//    *******************************Update Task**************************************
 
     @GetMapping("/updateTask/{id}")
     public String showUpdateTaskForm(@PathVariable("id") long id, Model model) {
@@ -133,9 +145,17 @@ public class TaskController {
                              @RequestParam("description") String description,
                              @RequestParam("category") String category,
                              @RequestParam("date") LocalDate date,
-                             @RequestParam("id") long id) {
+                             @RequestParam("id") long id,
+                             Model model) {
 
 Task task = taskService.findById(id);
+
+        if(date.isBefore(LocalDate.now())){
+            model.addAttribute("task", task);
+            model.addAttribute("pastDate","Due date cannot be in the past.");
+            return "updateTask";
+        }
+
 Category category1 = categoryService.findByName(category);
 task.setName(name);
 task.setDescription(description);
@@ -146,6 +166,72 @@ taskService.save(task);
 
         return "redirect:/task";
     }
+
+
+
+//    *******************************Sort Task By category****************************************
+
+@GetMapping("/category/{category}")
+    public String taskCategory(@PathVariable("category")String category,
+                               Model model){
+        User user = loggedInUser();
+        Category category1 = categoryService.findByName(category);
+      List<Task> tasks = taskService.findByCategory(category1,user);
+      model.addAttribute("tasks",tasks);
+    model.addAttribute("user",user);
+    if (tasks.size()==0){
+        model.addAttribute("notask","You Dont Have any task in this category.");
+    }
+
+    return "tasks";
+    }
+
+
+
+    @GetMapping("/status/{status}")
+    public String taskStatus(@PathVariable("status")String status,
+                             Model model){
+        User user = loggedInUser();
+        model.addAttribute("user",user);
+
+        if(status.equals("scheduled")) {
+            List<Task> tasks = taskService.findByScheduled(true,user);
+            model.addAttribute("tasks",tasks);
+
+            if (tasks.size()==0){
+                model.addAttribute("notask","You Dont Have any task with this status.");
+            }
+
+
+        }
+
+        if(status.equals("completed")) {
+            List<Task> tasks = taskService.findByCompleted(true,user);
+            model.addAttribute("tasks",tasks);
+
+            if (tasks.size()==0){
+                model.addAttribute("notask","You Dont Have any task with this status.");
+            }
+
+        }
+
+        if(status.equals("pending")) {
+            List<Task> tasks = taskService.findByCompletedAndScheduled(false,false,user);
+            model.addAttribute("tasks",tasks);
+
+            if (tasks.size()==0){
+                model.addAttribute("notask","You Dont Have any task with this status.");
+            }
+
+        }
+
+
+
+
+        return "tasks";
+    }
+
+
 
 
 }

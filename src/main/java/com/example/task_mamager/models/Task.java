@@ -24,8 +24,14 @@ public class Task {
     private String name;
 
     private String description;
-    private boolean IsCompleted;
-    private boolean IsScheduled;
+
+    @Column(name = "is_completed")
+
+    private boolean isCompleted;
+
+    @Column(name = "is_scheduled")
+
+    private boolean isScheduled;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -43,8 +49,8 @@ public class Task {
     public Task(String name, String description, boolean isCompleted, boolean isScheduled, Category category, LocalDate dateCreated, User owner) {
         this.name = name;
         this.description = description;
-        IsCompleted = isCompleted;
-        IsScheduled = isScheduled;
+        this.isCompleted = isCompleted;
+        this.isScheduled = isScheduled;
         this.category = category;
         this.dateCreated = dateCreated;
         this.owner = owner;

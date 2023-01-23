@@ -1,7 +1,9 @@
 package com.example.task_mamager.controllers;
 
 
+import com.example.task_mamager.models.Task;
 import com.example.task_mamager.models.User;
+import com.example.task_mamager.services.TaskService;
 import com.example.task_mamager.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -16,11 +18,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @Controller
 
 public class UserController {
+
+    private final  TaskService taskService;
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
@@ -106,6 +112,18 @@ public class UserController {
     @GetMapping("/profile")
     public String profile(Model model){
        User user = loggedInUser();
+
+
+        List<Task> tasksCompleted = taskService.findByCompleted(true,user);
+        model.addAttribute("completed",tasksCompleted.size());
+
+        List<Task> tasksScheduled = taskService.findByScheduled(true,user);
+        model.addAttribute("scheduled",tasksScheduled.size());
+
+        List<Task> tasksPending = taskService.findByCompletedAndScheduled(false,false,user);
+        model.addAttribute("pending",tasksPending.size());
+
+
         model.addAttribute("user",user);
         return "profile";
     }
