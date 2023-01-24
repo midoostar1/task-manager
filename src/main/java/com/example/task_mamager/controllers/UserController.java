@@ -13,9 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -40,7 +38,7 @@ public class UserController {
 
         return password.length() >= 8 &&
 
-                password.contains("0") ||
+                (password.contains("0") ||
                 password.contains("1") ||
                 password.contains("3") ||
                 password.contains("4") ||
@@ -48,9 +46,9 @@ public class UserController {
                 password.contains("6") ||
                 password.contains("7") ||
                 password.contains("8") ||
-                password.contains("9")
+                password.contains("9"))
                         &&
-                        password.contains("!") ||
+                ( password.contains("!") ||
                 password.contains("#") ||
                 password.contains("$") ||
                 password.contains("%") ||
@@ -75,7 +73,7 @@ public class UserController {
                 password.contains("?") ||
                 password.contains("@") ||
                 password.contains("\\") ||
-                password.contains("'");
+                password.contains("'"));
 
 
     }
@@ -111,8 +109,8 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profile(Model model){
-       User user = loggedInUser();
-
+       User user1 = loggedInUser();
+User user = userService.findById(loggedInUser().getId());
 
         List<Task> tasksCompleted = taskService.findByCompleted(true,user);
         model.addAttribute("completed",tasksCompleted.size());
@@ -124,8 +122,68 @@ public class UserController {
         model.addAttribute("pending",tasksPending.size());
 
 
+        List<Task> tasksAll = taskService.findByOwner(user);
+        model.addAttribute("all",tasksAll.size());
+
+
         model.addAttribute("user",user);
         return "profile";
     }
+
+
+
+    @PostMapping("/updateUser")
+    public String confirmEdit(@RequestParam("id") long id,
+                              @RequestParam("firstName") String firstName,
+                              @RequestParam("lastName") String lastName,
+                              @RequestParam("username") String username,
+                              @RequestParam("email") String email,
+                              @RequestParam("password") String password) {
+
+        User user = userService.findById(id);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setEmail(username );
+        if(!password.isEmpty() && isValidPassword(password)){
+            String hash = passwordEncoder.encode(password);
+            user.setPassword(hash);
+
+        }
+        userService.save(user);
+        return "redirect:/profile";
+    }
+
+
+
+
+
+    //Upload User Profile Image
+    @GetMapping ("/users/imageUpload/{baseImgUrl}/{extensionUrl}/{returnUrl}")
+    public String profileImageUpload(@PathVariable String baseImgUrl,
+                                     @PathVariable String extensionUrl,
+                                     @PathVariable String returnUrl){
+        System.out.println("Upload image controller hit");
+        System.out.println("base image url: "+baseImgUrl);
+        System.out.println("extension url: "+ extensionUrl);
+        System.out.println("return url: "+ returnUrl);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getPrincipal() == "anonymousUser")
+        {
+            return "redirect:login";
+        }
+       User user1 = loggedInUser();
+        User user = userService.findById(loggedInUser().getId());
+
+        String imgUrl = "https://"+baseImgUrl+"/"+extensionUrl;
+        user.setProfilePhoto(imgUrl);
+       userService.save(user);
+        System.out.println("Save should hit");
+        return "redirect:/"+returnUrl;
+    }
+
+
+
+
 
 }

@@ -109,25 +109,29 @@
             <br>
             <br>
             <br>
-            <br>
+
         </div>
 
-        <div id="userProfilePic" class="avatar avatar-lg" style="margin-left:4em">
-            <a class="w-100" href="#">
+        <div id="userProfilePic" class="avatar avatar-lg">
 
-                <img style="width: 50px; margin-left: 1.2em" class="avatar-img  border  border-3  "
-                     th:src="${user.profilePhoto}" alt="">
 
-            </a>
+            <div class="" style="margin-left:5em " >
+                <img class="avatar-img  border  border-3 ms"
+                     th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
+            </div>
+            <div class="" style="margin-left:4em ">
+                <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
+            </div>
+            <hr>
 
-            <h5 class="p-2" style="margin-right:1px"><a href="/profile"
-                                                        th:text="${user.firstName}+' '+${user.lastName}"></a></h5>
         </div>
 
         <ul class="list-unstyled components">
             <li><a href="/" class="active">Home</a></li>
-            <li><a href="/about">About</a></li>
+
             <li><a href="/profile">Profile</a></li>
+
+            <li><a href="/about">About</a></li>
         </ul>
 
 
@@ -179,21 +183,17 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="#">Contact</a>
-            </li>
+
         </ul>
 
-        <nav class="text-center text-white">
-            <ul>
-                <!-- More links here... -->
-                <li class="text-white" style="list-style: none">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn btn-outline-light" style="margin-top: 8px">Logout</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
+        <ul>
+            <!-- More links here... -->
+            <li class="text-white" style="list-style: none">
+                <form class="ms-0" th:action="@{/logout}" th:method="post">
+                    <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
+                </form>
+            </li>
+        </ul>
 
 
     </nav>
@@ -217,7 +217,7 @@
                     <h1>MyTask</h1>
                 </a>
 
-                <div class="">
+                <div class="text-center mx-auto me-sm-auto">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
                         <i class="bi bi-blockquote-left"></i>
@@ -269,6 +269,13 @@
                                                 <p th:if="${task.isCompleted() == true}" th:text="${task.getDescription()}" class="text-decoration-line-through"></p>
                                                 <p th:if="${task.isCompleted() == false}" th:text="${task.getDescription()}"></p>
 
+                                                <div class="text-decoration-line-through" th:if="${task.isCompleted() == true}">
+                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
+                                                </div>
+
+                                                <div th:if="${task.isCompleted() == false}">
+                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
+                                                </div>
 
                                             </div>
 

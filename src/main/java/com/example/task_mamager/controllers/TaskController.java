@@ -216,15 +216,13 @@ taskService.save(task);
         }
 
         if(status.equals("pending")) {
-            List<Task> tasks = taskService.findByCompletedAndScheduled(false,false,user);
-            model.addAttribute("tasks",tasks);
+            List<Task> tasks = taskService.findByCompletedAndScheduled(false, false, user);
+            model.addAttribute("tasks", tasks);
 
-            if (tasks.size()==0){
-                model.addAttribute("notask","You Dont Have any task with this status.");
+            if (tasks.size() == 0) {
+                model.addAttribute("notask", "You Dont Have any task with this status.");
             }
-
         }
-
 
 
 
