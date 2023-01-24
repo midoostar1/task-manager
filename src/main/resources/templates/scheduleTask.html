@@ -141,56 +141,55 @@
                         <div class="card-body px-4 py-5 px-md-5">
 
                             <div class="text-center mb-4">
-                                <h4>Create task</h4>
+                                <h4 style="color: hsl(218, 81%, 75%)">Schedule task</h4>
 
-                                <div class="alert alert-danger m-3" role="alert" th:text="${invalid}" th:if="${invalid}"></div>
+                                <hr class="text-white">
+                                <div class="alert alert-danger m-3" role="alert" th:text="${pastDate}" th:if="${pastDate}"></div>
 
                             </div>
 
-                            <form th:action="@{/createTask}" th:method="post" >
+
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="row">
 
                                     <!-- Email input -->
-                                    <div class="form-outline mb-4">
-                                        <input type="text" required th:name="name"  id="name" class="form-control" />
-                                        <label class="form-label"  for="name">Name</label>
+                                    <div class=" mb-4 text-center">
+                                        <h4 th:text="${task.getName()}"></h4>
                                     </div>
 
                                     <!-- Password input -->
-                                    <div class="form-outline mb-4">
-                                        <input type="text" required   th:name="description" id="description" class="form-control" />
-                                        <label class="form-label" for="description">Description</label>
+                                    <div class=" mb-4 text-center">
+                                        <h5 th:text="${task.getDescription()}"></h5>
+                                    </div>
+
+                                    <form th:action="@{/scheduleTask}" th:method="post" >
+
+                                    <div class="form-outline mb-4 invisible">
+                                        <input type="number" required th:name="id"  id="id" th:value="${task.getId()}" class="form-control" />
+                                        <label class="form-label"  for="id">id</label>
                                     </div>
 
 
                                     <div class="form-outline mb-4">
-                                        <select  required   th:name="category" id="category" class="form-select">
-                                            <option value="Work">Work</option>
-                                            <option value="Chores">Chores</option>
-                                            <option value="Academic">Academic</option>
-                                            <option value="Health">Health</option>
-                                            <option value="Finance">Finance</option>
-                                            <option value="Misc">Misc</option>
+                                        <label class="form-label" style="margin: 0 auto"  for="date">Set due date</label>
 
-                                        </select>
-                                        <label class="form-label" for="category">Category</label>
+                                        <input type="date" required th:name="date"  id="date" class="form-control" />
                                     </div>
-
 
                                     <!-- Submit button -->
                                     <button type="submit" class="btn btn-primary btn-block mb-4">
-                                       Submit
+                                        Submit
                                     </button>
 
                                     <!-- Register buttons -->
 
-                                </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- Section: Design Block -->
@@ -204,21 +203,8 @@
 
 </main><!-- End #main -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
-</footer><!-- End Footer -->
+
+
 
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

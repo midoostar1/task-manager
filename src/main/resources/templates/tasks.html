@@ -81,6 +81,9 @@
         }
 
 
+
+
+
     </style>
 
 
@@ -109,20 +112,31 @@
             <br>
             <br>
             <br>
-            <br>
+
         </div>
 
-        <div id="userProfilePic" class="avatar avatar-lg" style="margin-left:4em">
-            <a class="w-100" href="#">
+        <div id="userProfilePic" class="avatar avatar-lg">
 
-                <img style="width: 50px; margin-left: 1.2em" class="avatar-img  border  border-3  "
-                     th:src="${user.profilePhoto}" alt="">
 
-            </a>
+            <div class="" style="margin-left:5em " >
+                <img class="avatar-img  border  border-3 ms"
+                     th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
+            </div>
+            <div class="" style="margin-left:4em ">
+                <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
+            </div>
+            <hr>
 
-            <h5 class="p-2" style="margin-right:1px"><a href="/profile"
-                                                        th:text="${user.firstName}+' '+${user.lastName}"></a></h5>
         </div>
+
+        <ul class="list-unstyled components">
+            <li><a href="/" class="active">Home</a></li>
+
+            <li><a href="/profile">Profile</a></li>
+
+            <li><a href="/about">About</a></li>
+        </ul>
+
 
         <ul class="list-unstyled components">
 
@@ -131,68 +145,64 @@
             </li>
 
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task category</a>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sort by category</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Work</a>
+                        <a th:href="@{/category/{category}(category= Work)}">Work</a>
                     </li>
                     <li>
-                        <a href="#">Chores</a>
+                        <a th:href="@{/category/{category}(category= Chores)}">Chores</a>
                     </li>
                     <li>
-                        <a href="#">Academic</a>
-                    </li>
-
-                    <li>
-                        <a href="#">Finance</a>
+                        <a th:href="@{/category/{category}(category= Academic)}">Academic</a>
                     </li>
 
                     <li>
-                        <a href="#">Health</a>
+                        <a th:href="@{/category/{category}(category= Finance)}">Finance</a>
                     </li>
 
                     <li>
-                        <a href="#">Misc</a>
+                        <a th:href="@{/category/{category}(category= Health)}">Health</a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/category/{category}(category= Misc)}">Misc</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Task Status</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sort by status</a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Scheduled</a>
+                        <a th:href="@{/status/{status}(status= scheduled)}">Scheduled</a>
                     </li>
                     <li>
-                        <a href="#">Completed</a>
+                        <a th:href="@{/status/{status}(status= completed)}">Completed</a>
                     </li>
                     <li>
-                        <a href="#">Pending</a>
+                        <a th:href="@{/status/{status}(status= pending)}">Pending</a>
                     </li>
                 </ul>
             </li>
 
-            <li>
-                <a href="#">Contact</a>
+
+        </ul>
+
+        <ul>
+            <!-- More links here... -->
+            <li class="text-white" style="list-style: none">
+                <form class="ms-0" th:action="@{/logout}" th:method="post">
+                    <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
+                </form>
             </li>
         </ul>
 
-        <nav class="text-center text-white">
-            <ul>
-                <!-- More links here... -->
-                <li class="text-white" style="list-style: none">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn btn-outline-light" style="margin-top: 8px">Logout</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-
 
     </nav>
 
 
-    </nav>
+
     <!-- Page Content -->
     <div id="content">
 
@@ -210,7 +220,7 @@
                     <h1>MyTask</h1>
                 </a>
 
-                <div class="">
+                <div class="text-center mx-auto me-sm-auto">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
                         <i class="bi bi-blockquote-left"></i>
@@ -219,22 +229,6 @@
                 </div>
 
 
-
-
-
-
-
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                    </ul>
-                </nav><!-- .navbar -->
-
-
-                <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-                <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
             </div>
         </header><!-- End Header -->
@@ -256,35 +250,45 @@
 
 
                             <!--        ************Start of card section************-->
-                            <div class="grey-bg mt-1" style="z-index: auto; width: 80vw; height: 100vh">
+                            <div class="grey-bg mt-1 mx-auto" style="z-index: auto; width: 80vw; height: 100vh">
 
 
 
-                                    <div  class="row w-100 g-1">
+                                    <div  class="row w-100 g-1 justify-content-evenly mt-1">
+
+                                        <div class="alert alert-danger m-3" role="alert" th:text="${notask}" th:if="${notask}"></div>
 
 
-
-                                        <div th:each="task:${tasks}" class="card text-center col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-                                            <div class="card-header">
-                                                <span th:if="${task.isIsCompleted() == true}" th:text="Completed"></span>
-                                                <span th:if="${task.isIsScheduled() == true}" th:text="Scheduled"></span>
-                                                <span th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" th:text="Pending"></span>
+                                        <div th:each="task:${tasks}" class="card text-center col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-1">
+                                            <div class="card-header bg-glass">
+                                                <h5 style="color: hsl(97,86%,36%)" th:if="${task.isCompleted() == true}" th:text="Completed"></h5>
+                                                <h5 style="color: hsl(52,78%,67%)" th:if="${task.isScheduled() == true}" th:text="Scheduled"></h5>
+                                                <h5 style="color: hsl(345,92%,63%)" th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" th:text="Pending"></h5>
                                             </div>
                                             <div class="card-body">
-                                                <h3 th:if="${task.isIsCompleted() == true}" th:text="${task.getName()}" class="text-decoration-line-through"></h3>
-                                                <h3 th:if="${task.isIsCompleted() == false}" th:text="${task.getName()}"></h3>
+                                                <h3 th:if="${task.isCompleted() == true}" th:text="${task.getName()}" class="text-decoration-line-through"></h3>
+                                                <h3 th:if="${task.isCompleted() == false}" th:text="${task.getName()}"></h3>
 
+                                                <p th:if="${task.isCompleted() == true}" th:text="${task.getDescription()}" class="text-decoration-line-through"></p>
+                                                <p th:if="${task.isCompleted() == false}" th:text="${task.getDescription()}"></p>
 
-                                                <p th:text="${task.getDescription()}" class="card-text"></p>
+                                                <div class="text-decoration-line-through" th:if="${task.isCompleted() == true}">
+                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
+                                                </div>
+
+                                                <div th:if="${task.isCompleted() == false}">
+                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
+                                                </div>
+
                                             </div>
 
-                                            <div th:if="${task.isIsScheduled() == true}">
-                                                <p >Due on: <span th:text="${task.getDueDate()}"></span></p>
+                                            <div th:if="${task.isScheduled() == true}">
+                                                <p >Due on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDueDate()}"></span></p>
                                             </div>
 
 <!--                         **********************************                   -->
                                             <div class="action row w-80">
-                                              <div th:if="${task.isIsCompleted() == false}" class="col">
+                                              <div th:if="${task.isCompleted() == false}" class="col">
                                                   <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Update</a>
                                               </div>
                                                <div class="col">
@@ -296,13 +300,13 @@
 
 
 
-                                               <div th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" class="col">
-                                                   <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
+                                               <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="col">
+                                                   <a th:href="@{/scheduleTask/{id}(id=${task.id})}" class="btn btn-outline-light">Schedule</a>
 
                                                </div>
 
-                                                <div th:if="${task.isIsCompleted() == false}" class="col">
-                                                    <a th:href="@{/complete Task/{id}(id=${task.id})}" class="btn btn-outline-light">Complete</a>
+                                                <div th:if="${task.isCompleted() == false}" class="col">
+                                                    <a th:href="@{/completeTask/{id}(id=${task.id})}" class="btn btn-outline-light">Complete</a>
 
                                                 </div>
 
@@ -312,15 +316,15 @@
 
                                             <div class="card-footer text-muted">
 
-                                                <div th:if="${task.isIsCompleted() == true}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                <div th:if="${task.isCompleted() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
                                                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
 
-                                                <div th:if="${task.isIsScheduled() == true}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                <div th:if="${task.isScheduled() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
                                                     <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
 
-                                                <div th:if="${task.isIsScheduled() == false} and ${task.isIsCompleted() == false}" class="progress mt-1 mb-0" style="height: 7px;">
+                                                <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="progress mt-1 mb-0" style="height: 7px;">
                                                     <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
 

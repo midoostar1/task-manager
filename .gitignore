@@ -33,7 +33,8 @@ build/
 .vscode/
 
 #API Data
-filepickerAPI.js
+src/main/resources/static/js/apiKey.js
+
 
 # production database
 src/main/resources/application.properties

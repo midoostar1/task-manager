@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -14,7 +13,8 @@
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
 
     <!-- Google Fonts -->
@@ -81,6 +81,9 @@
         }
 
 
+        #p-img:hover {
+            cursor: pointer;
+        }
     </style>
 
 
@@ -95,12 +98,6 @@
 <body>
 
 
-
-
-
-
-
-
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar">
@@ -109,52 +106,51 @@
             <br>
             <br>
             <br>
-            <br>
+
         </div>
 
-        <div id="userProfilePic" class="avatar avatar-lg" style="margin-left:4em">
-            <a class="w-100" href="#">
+        <div id="userProfilePic" class="avatar avatar-lg">
 
-                <img style="width: 50px; margin-left: 1.2em" class="avatar-img  border  border-3  "
-                     th:src="${user.profilePhoto}" alt="">
 
-            </a>
+            <div class="" style="margin-left:5em " >
+                <img id="p-img" class="avatar-img  border  border-3 ms"
+                     th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
+            </div>
+            <div class="" style="margin-left:4em ">
+                <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
+            </div>
 
-            <h5 class="p-2" style="margin-right:1px"><a href="/userProfile"
-                                                        th:text="${user.firstName}+' '+${user.lastName}"></a></h5>
+
         </div>
+        <hr>
 
         <ul class="list-unstyled components">
+            <li><a href="/" class="active">Home</a></li>
 
+            <li><a href="/profile">Profile</a></li>
 
-            <li>
-                <a href="/about">About</a>
-            </li>
+            <li><a href="/about">About</a></li>
 
             <li>
                 <a href="/task">Manage Tasks</a>
             </li>
-
         </ul>
 
 
-        <nav class="text-center text-white">
             <ul>
                 <!-- More links here... -->
                 <li class="text-white" style="list-style: none">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn btn-outline-light" style="margin-top: 8px">Logout</button>
+                    <form class="ms-0" th:action="@{/logout}" th:method="post">
+                        <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
                     </form>
                 </li>
             </ul>
-        </nav>
+
 
 
     </nav>
     <!-- Page Content -->
     <div id="content">
-
-
 
 
         <!-- ======= Header ======= -->
@@ -177,23 +173,6 @@
                 </div>
 
 
-
-
-
-
-
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/profile">Profile</a></li>
-                    </ul>
-                </nav><!-- .navbar -->
-
-
-                <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-                <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
             </div>
         </header><!-- End Header -->
 
@@ -209,107 +188,146 @@
                 <div class="container">
 
                     <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong" style=""></div>
+                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"
+                             style=""></div>
                         <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
 
 
                         <!--        ************Start of card section************-->
                         <div class="grey-bg mt-1" style="z-index: auto; width: 80vw; height: 100vh">
 
-                        <div class="row w-100">
+                            <div class="row w-100">
 
-                            <div class="col-md-6 col-sm-11 mt-3">
-                                <div class="card">
+                                <div class="col-md-6 col-sm-11 mt-3">
+                                    <div class="card">
 
-                                    <div class="card-header text-center"><h5> User Details</h5></div>
+                                        <div class="card-header text-center"><h5> User Details</h5></div>
 
-                                    <form th:action="@{/admin/saveEdit}" method="POST">
+                                        <form th:action="@{/updateUser}" method="POST">
 
-                                        <div class="form-group row w-100 m-1">
-                                            <label class="col-form-label col-sm-4 text-center">Id</label>
-                                            <div class="col-8">
-                                                <input name="id" th:value="${user.id}" readonly type="number"
-                                                       class="form-control">
+                                            <div class="form-group row w-100 m-1">
+                                                <label class="col-form-label col-sm-4 text-center">Id</label>
+                                                <div class="col-8">
+                                                    <input name="id" th:value="${user.id}" readonly type="number"
+                                                           class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row w-100 m-1">
-                                            <label class="col-form-label col-sm-4 text-center">Firstname</label>
-                                            <div class="col-8">
-                                                <input name="firstName" th:value="${user.firstName}" class="form-control" size="16"
-                                                       type="text">
+                                            <div class="form-group row w-100 m-1">
+                                                <label class="col-form-label col-sm-4 text-center">Firstname</label>
+                                                <div class="col-8">
+                                                    <input name="firstName" th:value="${user.firstName}"
+                                                           class="form-control" size="16"
+                                                           type="text">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row w-100 m-1">
-                                            <label class="col-form-label col-sm-4 text-center"> Lastname</label>
-                                            <div class="col-8">
-                                                <input name="lastName" th:value="${user.lastName}" type="text"
-                                                       class=" form-control"/>
+                                            <div class="form-group row w-100 m-1">
+                                                <label class="col-form-label col-sm-4 text-center"> Lastname</label>
+                                                <div class="col-8">
+                                                    <input name="lastName" th:value="${user.lastName}" type="text"
+                                                           class=" form-control"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row w-100 m-1">
-                                            <label class="col-form-label col-sm-4 text-center">Username</label>
-                                            <div class="col-8">
-                                                <input name="username" th:value="${user.username}" type="text" class="form-control">
+                                            <div class="form-group row w-100 m-1">
+                                                <label class="col-form-label col-sm-4 text-center">Username</label>
+                                                <div class="col-8">
+                                                    <input name="username" th:value="${user.username}" type="text"
+                                                           class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                        <div class="form-group row w-100 m-1">
-                                            <label class="col-form-label col-sm-4 text-center">Email</label>
-                                            <div class="col-8">
-                                                <input name="email" th:value="${user.email}" type="text" class="form-control">
+                                            <div class="form-group row w-100 m-1">
+                                                <label class="col-form-label col-sm-4 text-center">Email</label>
+                                                <div class="col-8">
+                                                    <input name="email" th:value="${user.email}" type="text"
+                                                           class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                        <div class="form-group row w-100 m-1    ">
-                                            <label class="col-form-label col-sm-4 text-center">password</label>
-                                            <div class="col-8">
-                                                <input name="password" type="text" class="form-control">
+                                            <div class="form-group row w-100 m-1    ">
+                                                <label class="col-form-label col-sm-4 text-center">password</label>
+                                                <div class="col-8">
+                                                    <input name="password" type="text" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="text-center m-1">
-                                            <button class="btn btn-primary">update</button>
+                                            <div class="text-center m-1">
+                                                <button class="btn btn-primary">update</button>
 
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-6 col-sm-11 mt-3">
-
-
-                                <div class="card ">
-                                    <div class="card-header text-center">
-                                        <h5>Tasks summary</h5>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <table class="table  table-advance ">
-                                        <tbody>
-                                        <tr>
-                                            <th></th>
-                                            <th><i class="icon_profile"></i> Description</th>
-                                            <th><i class="icon_cogs"></i> Action</th>
-                                        </tr>
-                                        <tr>
-                                            <td><i class="fa fa-table"></i></td>
-                                            <td ></td>
-                                            <td></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                </div>
+
+
+                                <div class="col-md-6 col-sm-11 mt-3">
+
+
+                                    <div class="card ">
+                                        <div class="card-header text-center">
+                                            <h5>Tasks summary</h5>
+                                        </div>
+                                        <table class="table  table-advance ">
+                                            <thead>
+                                            <tr>
+
+                                                <th><i class="icon_profile"></i> Status</th>
+                                                <th><i class="icon_cogs"></i>Total</th>
+                                                <th><i class="icon_profile"></i>Action</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody class="text-white">
+                                            <tr>
+                                                <td><i class="fa fa-table">Completed</i></td>
+                                                <td th:text="${completed}"><i class="fa fa-table"></i></td>
+                                                <td><i class="fa fa-table"></i><a
+                                                        th:href="@{/status/{status}(status= completed)}"
+                                                        class="btn btn-outline-light">View</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-table">Scheduled</i></td>
+                                                <td th:text="${scheduled}"><i class="fa fa-table"></i></td>
+                                                <td><i class="fa fa-table"></i><a
+                                                        th:href="@{/status/{status}(status= scheduled)}"
+                                                        class="btn btn-outline-light">View</a></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-table"></i>Pending</td>
+                                                <td th:text="${pending}"><i class="fa fa-table"></i></td>
+                                                <td><i class="fa fa-table"></i><a
+                                                        th:href="@{/status/{status}(status= pending)}"
+                                                        class="btn btn-outline-light">View</a></td>
+
+                                            </tr>
+
+
+                                            <tr>
+                                                <td><i class="fa fa-table"></i>Total</td>
+                                                <td th:text="${all}"><i class="fa fa-table"></i></td>
+                                                <td><i class="fa fa-table"></i><a
+                                                        th:href="@{/task}"
+                                                        class="btn btn-outline-light">View</a></td>
+
+                                            </tr>
+
+
+
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
+
+                            <!--*****************End of card section******************--->
                         </div>
-
-
-                        <!--*****************End of card section******************--->
-</div>
-
-
 
 
                     </div>
@@ -322,24 +340,16 @@
         </main><!-- End #main -->
 
 
-        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
 
         <div id="preloader">
             <div class="line"></div>
         </div>
 
 
-
-
-
-
-
-
-
-
     </div>
 </div>
-
 
 
 <!-- Vendor JS Files -->
@@ -350,25 +360,31 @@
 <script src="/vendor/glightbox/js/glightbox.min.js"></script>
 <script src="/vendor/aos/aos.js"></script>
 <script src="/vendor/php-email-form/validate.js"></script>
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
-
-
 
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 <!-- Popper.JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
 <!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
 <!-- jQuery Custom Scroller CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="/js/main.js"></script>
 <script src="/js/task.js"></script>
+<script src="/js/apiKey.js"></script>
+<script src="/js/filePicker.js"></script>
+
 
 
 </body>
