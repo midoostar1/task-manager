@@ -62,15 +62,16 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(
-                        "/following/user",
-                        "/searchPost",
-                        "/admin/**",
-                        "/super-admin/**",
-                        "/addAsset",
-                        "/userFinance",
-                        "/posts", //only authenticated users can create ads
-                        "/userProfile",
-                        "/finance/**"// only authenticated users can edit ads
+                        "/task/**",
+                        "/profile/**",
+                        "/showTaskForm/**",
+                        "/createTask/**",
+                        "/scheduleTask/**",
+                        "/updateTask/**",
+                        "/category/**",
+                        "/status/**",
+                        "/completeTask/**"
+
                 )
                 .authenticated()
 

@@ -99,7 +99,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/task" class="active">Home</a></li>
                 <li><a href="/about">About</a></li>
 
             </ul>
@@ -169,10 +169,9 @@
                                         <input th:value="${task.dueDate}" type="date" required th:name="date"  id="date" class="form-control" />
                                     </div>
 
-
-
                                     <div class="form-outline mb-4">
-                                        <select th:value="${task.category}"  required   th:name="category" id="category" class="form-select">
+                                        <select  required   th:name="category" id="category" class="form-select">
+                                            <option th:value="${task.getCategory().getName()}" th:text="${task.getCategory().getName()}">Work</option>
                                             <option value="Work">Work</option>
                                             <option value="Chores">Chores</option>
                                             <option value="Academic">Academic</option>
@@ -184,10 +183,20 @@
                                         <label class="form-label" for="category">Category</label>
                                     </div>
 
+
+
                                     <div class="form-outline mb-4 invisible">
-                                        <input type="number" required th:name="id"  id="id" th:value="${task.getId()}" class="form-control" />
+                                        <input type="number" required th:name="id" id="id" th:value="${task.getId()}" class="form-control" />
                                         <label class="form-label"  for="id">id</label>
                                     </div>
+
+
+                                    <div th:if="${task.isScheduled() == false}" class="form-outline mb-4 invisible">
+                                        <label class="form-label" style="margin: 0 auto"  for="date1">Due date</label>
+
+                                        <input type="date" th:name="date"  id="date1" class="form-control" />
+                                    </div>
+
 
                                     <!-- Submit button -->
                                     <button type="submit" class="btn btn-primary btn-block mb-4">

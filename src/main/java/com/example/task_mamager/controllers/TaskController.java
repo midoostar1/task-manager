@@ -5,6 +5,7 @@ import com.example.task_mamager.models.Task;
 import com.example.task_mamager.models.User;
 import com.example.task_mamager.services.CategoryService;
 import com.example.task_mamager.services.TaskService;
+import com.example.task_mamager.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -22,10 +24,14 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    private final UserService userService;
     private final CategoryService categoryService;
 
     public User loggedInUser() {
-        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+       User user1 =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+       User user = userService.findById(user1.getId());
+       return user;
     }
 
 
@@ -102,6 +108,7 @@ public class TaskController {
     public String showScheduleForm(@PathVariable("id") long id, Model model) {
         Task task = taskService.findById(id);
         model.addAttribute("task", task);
+
         return "scheduleTask";
     }
 
@@ -144,24 +151,20 @@ public class TaskController {
     public String updateTask(@RequestParam("name") String name,
                              @RequestParam("description") String description,
                              @RequestParam("category") String category,
-                             @RequestParam("date") LocalDate date,
+                           @RequestParam(name ="date",required=false) Optional<LocalDate> date,
                              @RequestParam("id") long id,
                              Model model) {
 
+
 Task task = taskService.findById(id);
 
-        if(date.isBefore(LocalDate.now())){
-            model.addAttribute("task", task);
-            model.addAttribute("pastDate","Due date cannot be in the past.");
-            return "updateTask";
-        }
+
 
 Category category1 = categoryService.findByName(category);
 task.setName(name);
 task.setDescription(description);
 task.setCategory(category1);
-task.setDueDate(date);
-
+        date.ifPresent(task::setDueDate);
 taskService.save(task);
 
         return "redirect:/task";
@@ -180,7 +183,7 @@ taskService.save(task);
       model.addAttribute("tasks",tasks);
     model.addAttribute("user",user);
     if (tasks.size()==0){
-        model.addAttribute("notask","You Dont Have any task in this category.");
+        model.addAttribute("notask","You don't have any task in this category.");
     }
 
     return "tasks";
@@ -199,7 +202,7 @@ taskService.save(task);
             model.addAttribute("tasks",tasks);
 
             if (tasks.size()==0){
-                model.addAttribute("notask","You Dont Have any task with this status.");
+                model.addAttribute("notask","You don't have any task with this status.");
             }
 
 
@@ -210,7 +213,7 @@ taskService.save(task);
             model.addAttribute("tasks",tasks);
 
             if (tasks.size()==0){
-                model.addAttribute("notask","You Dont Have any task with this status.");
+                model.addAttribute("notask","You don't have any task with this status.");
             }
 
         }
@@ -220,7 +223,7 @@ taskService.save(task);
             model.addAttribute("tasks", tasks);
 
             if (tasks.size() == 0) {
-                model.addAttribute("notask", "You Dont Have any task with this status.");
+                model.addAttribute("notask", "You don't have any task with this status.");
             }
         }
 
