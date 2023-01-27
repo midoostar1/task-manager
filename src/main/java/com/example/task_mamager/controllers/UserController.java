@@ -30,9 +30,12 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
 
-   public User loggedInUser(){
-    return    (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-   }
+    public User loggedInUser() {
+
+        User user1 =  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userService.findById(user1.getId());
+        return user;
+    }
 
     public boolean isValidPassword(String password) {
 
@@ -143,8 +146,8 @@ User user = userService.findById(loggedInUser().getId());
         User user = userService.findById(id);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setUsername(username);
         user.setEmail(email);
-        user.setEmail(username );
         if(!password.isEmpty() && isValidPassword(password)){
             String hash = passwordEncoder.encode(password);
             user.setPassword(hash);
