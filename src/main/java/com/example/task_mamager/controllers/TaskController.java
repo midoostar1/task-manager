@@ -183,7 +183,7 @@ taskService.save(task);
       model.addAttribute("tasks",tasks);
     model.addAttribute("user",user);
     if (tasks.size()==0){
-        model.addAttribute("notask","You Dont Have any task in this category.");
+        model.addAttribute("notask","You don't have any task in this category.");
     }
 
     return "tasks";
@@ -202,7 +202,7 @@ taskService.save(task);
             model.addAttribute("tasks",tasks);
 
             if (tasks.size()==0){
-                model.addAttribute("notask","You Dont Have any task with this status.");
+                model.addAttribute("notask","You don't have any task with this status.");
             }
 
 
@@ -213,7 +213,7 @@ taskService.save(task);
             model.addAttribute("tasks",tasks);
 
             if (tasks.size()==0){
-                model.addAttribute("notask","You Dont Have any task with this status.");
+                model.addAttribute("notask","You don't have any task with this status.");
             }
 
         }
@@ -223,7 +223,7 @@ taskService.save(task);
             model.addAttribute("tasks", tasks);
 
             if (tasks.size() == 0) {
-                model.addAttribute("notask", "You Dont Have any task with this status.");
+                model.addAttribute("notask", "You don't have any task with this status.");
             }
         }
 
