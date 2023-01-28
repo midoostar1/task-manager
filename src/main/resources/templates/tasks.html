@@ -241,119 +241,119 @@
 
                 <div class="container-fluid" style="height: 100%">
 
-                        <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="height: 100%">
-                            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong" ></div>
-                            <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
+                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="height: 100%">
+                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong" ></div>
+                        <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
 
 
-                            <!--        ************Start of card section************-->
-                            <div class="grey-bg mt-1 mx-auto" style="z-index: auto; width: 80vw; height: 1500px">
-
-
-
-                                    <div  class="row w-100 g-1 justify-content-evenly mt-1" style="height: 100vh">
-
-                                        <div class="alert alert-danger m-3" role="alert" th:text="${notask}" th:if="${notask}"></div>
-
-
-                                        <div th:each="task:${tasks}" class="card text-center col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-1 my-1" style="height: 22em">
-                                            <div class="card-header bg-glass">
-                                                <h5 style="color: hsl(97,86%,36%)" th:if="${task.isCompleted() == true}" th:text="Completed"></h5>
-                                                <h5 style="color: hsl(52,78%,67%)" th:if="${task.isScheduled() == true}" th:text="Scheduled"></h5>
-                                                <h5 style="color: hsl(345,92%,63%)" th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" th:text="Pending"></h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <h3 th:if="${task.isCompleted() == true}" th:text="${task.getName()}" class="text-decoration-line-through"></h3>
-                                                <h3 th:if="${task.isCompleted() == false}" th:text="${task.getName()}"></h3>
-
-                                                <p th:if="${task.isCompleted() == true}"  class="text-decoration-line-through">Category: <span style="color: hsl(218, 81%, 75%)" th:text="${task.getCategory().getName()}"></span></p>
-                                                <p th:if="${task.isCompleted() == false}">Category: <span style="color: hsl(218, 81%, 75%)" th:text="${task.getCategory().getName()}"></span></p>
-
-                                                <p th:if="${task.isCompleted() == true}" th:text="${task.getDescription()}" class="text-decoration-line-through"></p>
-                                                <p th:if="${task.isCompleted() == false}" th:text="${task.getDescription()}"></p>
-
-                                                <div class="text-decoration-line-through" th:if="${task.isCompleted() == true}">
-                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
-                                                </div>
-
-                                                <div th:if="${task.isCompleted() == false}">
-                                                    <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
-                                                </div>
+                        <!--        ************Start of card section************-->
+                        <div class="grey-bg mt-1 mx-auto" style="z-index: auto; width: 80vw; height: 1500px">
 
 
 
-                                            <div th:if="${task.isScheduled() == true}">
-                                                <p >Due on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDueDate()}"></span></p>
-                                            </div>
+                            <div  class="row w-100 g-1 justify-content-evenly mt-1" style="height: 100vh">
 
-<!--                         **********************************                   -->
+                                <div class="alert alert-danger m-3" role="alert" th:text="${notask}" th:if="${notask}"></div>
 
 
-                                            <div class="action row ">
+                                <div th:each="task:${tasks}" class="card text-center col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-1 my-1" style="height: 22em">
+                                    <div class="card-header bg-glass">
+                                        <h5 style="color: hsl(97,86%,36%)" th:if="${task.isCompleted() == true}" th:text="Completed"></h5>
+                                        <h5 style="color: hsl(52,78%,67%)" th:if="${task.isScheduled() == true}" th:text="Scheduled"></h5>
+                                        <h5 style="color: hsl(345,92%,63%)" th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" th:text="Pending"></h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 th:if="${task.isCompleted() == true}" th:text="${task.getName()}" class="text-decoration-line-through"></h3>
+                                        <h3 th:if="${task.isCompleted() == false}" th:text="${task.getName()}"></h3>
 
-                                                <div th:if="${task.isCompleted() == false}" class="col ">
-                                                    <a th:href="@{/completeTask/{id}(id=${task.id})}" class="btn btn-outline-success">Complete</a>
+                                        <p th:if="${task.isCompleted() == true}"  class="text-decoration-line-through">Category: <span style="color: hsl(218, 81%, 75%)" th:text="${task.getCategory().getName()}"></span></p>
+                                        <p th:if="${task.isCompleted() == false}">Category: <span style="color: hsl(218, 81%, 75%)" th:text="${task.getCategory().getName()}"></span></p>
 
-                                                </div>
+                                        <p th:if="${task.isCompleted() == true}" th:text="${task.getDescription()}" class="text-decoration-line-through"></p>
+                                        <p th:if="${task.isCompleted() == false}" th:text="${task.getDescription()}"></p>
 
+                                        <div class="text-decoration-line-through" th:if="${task.isCompleted() == true}">
+                                            <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
+                                        </div>
 
-                                                <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="col ">
-                                                    <a th:href="@{/scheduleTask/{id}(id=${task.id})}" class="btn btn-outline-warning">Schedule</a>
-
-                                                </div>
-
-                                              <div th:if="${task.isCompleted() == false}" class="col">
-                                                  <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Update</a>
-                                              </div>
-
-
-                                                <div class="col ">
-                                                    <a onclick="return confirm('Are you sure you want delete?')"
-                                                       th:href="@{/deleteTask/{id}(id=${task.id})}"
-                                                       class="btn btn-outline-danger"><i class="icon_close_alt2"></i>Delete</a>
-
-                                                </div>
-
-                                            </div>
-                                            </div>
-<!--                       ******************************************                     -->
-
-                                            <div class="card-footer text-muted ">
-
-                                                <div th:if="${task.isCompleted() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-
-                                                <div th:if="${task.isScheduled() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-
-                                                <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="progress mt-1 mb-0" style="height: 7px;">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-
-                                            </div>
+                                        <div th:if="${task.isCompleted() == false}">
+                                            <p >Created on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDateCreated()}"></span></p>
                                         </div>
 
 
+
+                                        <div th:if="${task.isScheduled() == true}">
+                                            <p >Due on: <span style="color: hsl(52,86%,57%)" th:text="${task.getDueDate()}"></span></p>
+                                        </div>
+
+                                        <!--                         **********************************                   -->
+
+
+                                        <div class="action row ">
+
+                                            <div th:if="${task.isCompleted() == false}" class="col ">
+                                                <a th:href="@{/completeTask/{id}(id=${task.id})}" class="btn btn-outline-success">Complete</a>
+
+                                            </div>
+
+
+                                            <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="col ">
+                                                <a th:href="@{/scheduleTask/{id}(id=${task.id})}" class="btn btn-outline-warning">Schedule</a>
+
+                                            </div>
+
+                                            <div th:if="${task.isCompleted() == false}" class="col">
+                                                <a th:href="@{/updateTask/{id}(id=${task.id})}" class="btn btn-outline-light">Update</a>
+                                            </div>
+
+
+                                            <div class="col ">
+                                                <a onclick="return confirm('Are you sure you want delete?')"
+                                                   th:href="@{/deleteTask/{id}(id=${task.id})}"
+                                                   class="btn btn-outline-danger"><i class="icon_close_alt2"></i>Delete</a>
+
+                                            </div>
+
+                                        </div>
                                     </div>
+                                    <!--                       ******************************************                     -->
 
+                                    <div class="card-footer text-muted ">
 
+                                        <div th:if="${task.isCompleted() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
 
+                                        <div th:if="${task.isScheduled() == true}" class="progress mt-1 mb-0 " style="height: 7px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
 
+                                        <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}" class="progress mt-1 mb-0" style="height: 7px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
 
 
                             </div>
 
-
-                            <!--*****************End of card section******************--->
 
 
 
 
 
                         </div>
+
+
+                        <!--*****************End of card section******************--->
+
+
+
+
+
                     </div>
+                </div>
 
             </section>
             <!-- Section: Design Block -->
