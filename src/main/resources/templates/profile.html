@@ -6,13 +6,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Profile</title>
+    <title>profile</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_io/favicon-32x32.png">
-
+      <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon_io/favicon-32x32.png">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -67,7 +66,7 @@
 
         #radius-shape-2 {
             border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-            bottom: -400px;
+            bottom: -50px;
             right: -400px;
             width: 300px;
             height: 300px;
@@ -82,9 +81,6 @@
         }
 
 
-        #p-img:hover {
-            cursor: pointer;
-        }
     </style>
 
 
@@ -99,262 +95,288 @@
 <body>
 
 
-<div class="wrapper">
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <br>
-            <br>
-            <br>
-            <br>
+
+
+
+<!-- Page Content -->
+<div id="content" style="height: 100%; width: 100vw">
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+
+            <a href="/task" class="logo d-flex align-items-center  me-auto me-lg-0">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <!-- <img src="/img/logo.png" alt=""> -->
+                <i class="bi bi-journals"></i>
+                <h1>MyTask</h1>
+            </a>
+
+            <div class="text-center mx-auto me-sm-auto">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
+                    <i class="bi bi-blockquote-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+            </div>
+
 
         </div>
-
-        <div id="userProfilePic" class="avatar avatar-lg">
-
-
-            <div class="" style="margin-left:5em " >
-                <img id="p-img" class="avatar-img  border  border-3 ms"
-                     th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
-            </div>
-            <div class="" style="margin-left:4em ">
-                <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
-            </div>
+    </header><!-- End Header -->
 
 
-        </div>
-        <hr>
+    <main id="main" data-aos="fade" data-aos-delay="1500" style="height: 100%">
 
-        <ul class="list-unstyled components">
-            <li><a href="/task" class="active">Home</a></li>
+        <!-- ======= End Page Header ======= -->
 
-            <li><a href="/profile">Profile</a></li>
-
-            <li><a href="/about">About</a></li>
-
-            <li>
-                <a href="/task">Manage Tasks</a>
-            </li>
-        </ul>
-
-
-            <ul>
-                <!-- More links here... -->
-                <li class="text-white" style="list-style: none">
-                    <form class="ms-0" th:action="@{/logout}" th:method="post">
-                        <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
-                    </form>
-                </li>
-            </ul>
+        <!-- Section: Design Block -->
+        <section class="background-radial-gradient overflow-hidden" style="height: 100%; margin-right: 0; margin-left: 0">
 
 
 
-    </nav>
-    <!-- Page Content -->
-    <div id="content">
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="height: 100%">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
 
 
-        <!-- ======= Header ======= -->
-        <header id="header" class="header d-flex align-items-center fixed-top">
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-
-                <a href="/task" class="logo d-flex align-items-center  me-auto me-lg-0">
-                    <!-- Uncomment the line below if you also wish to use an image logo -->
-                    <!-- <img src="/img/logo.png" alt=""> -->
-                    <i class="bi bi-journals"></i>
-                    <h1>MyTask</h1>
-                </a>
-
-                <div class="">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light">
-                        <i class="bi bi-blockquote-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                </div>
+                <!--        ************Start of card section************-->
+                <div class="grey-bg mt-1" style="z-index: auto; width: 100vw; height: 1500px;  margin-left: 0; margin-right: 0">
 
 
-            </div>
-        </header><!-- End Header -->
+                    <div class="row mt-5 gx-0" style="height: 100vh; width: 100vw; ">
+
+                        <!--************************************************************************************************-->
 
 
-        <main id="main" data-aos="fade" data-aos-delay="1500">
+                        <div id="sidebar" class="col-md-3 col-lg-3 col-xl-3 col-sm-12 me-md-4 me-lg-4" style="z-index: 1; border: 0.01em solid #6973b6; border-radius: 5px   ">
 
-            <!-- ======= End Page Header ======= -->
-
-            <!-- Section: Design Block -->
-            <section class="background-radial-gradient overflow-hidden">
-
-
-                <div class="container">
-
-                    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-                        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"
-                             style=""></div>
-                        <div id="radius-shape-2" class="position-absolute shadow-5-strong" style=""></div>
+                            <!--                                     Sidebar -->
+                            <nav class="p-2" style="margin-left: 0;">
+                                <div class="sidebar-header">
 
 
-                        <!--        ************Start of card section************-->
-                        <div class="grey-bg mt-1" style="z-index: auto; width: 80vw; height: 100vh">
+                                </div>
 
-                            <div class="row w-100">
-
-                                <div class="col-md-6 col-sm-11 mt-3">
-                                    <div class="card">
-
-                                        <div class="card-header text-center"><h5> User Details</h5></div>
-
-                                        <form th:action="@{/updateUser}" method="POST">
+                                <div id="userProfilePic" class="avatar avatar-lg">
 
 
-                                            <div class="form-group row w-100 m-1">
-                                                <label class="col-form-label col-sm-4 text-center">First name</label>
-                                                <div class="col-8">
-                                                    <input name="firstName" th:value="${user.firstName}"
-                                                           class="form-control" size="16"
-                                                           type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row w-100 m-1">
-                                                <label class="col-form-label col-sm-4 text-center"> Last name</label>
-                                                <div class="col-8">
-                                                    <input name="lastName" th:value="${user.lastName}" type="text"
-                                                           class=" form-control"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row w-100 m-1">
-                                                <label class="col-form-label col-sm-4 text-center">Username</label>
-                                                <div class="col-8">
-                                                    <input name="username" th:value="${user.username}" type="text"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
+                                    <div class="" style="margin-left:5em " >
+                                        <img id="p-img" class="avatar-img  border  border-3 ms"
+                                             th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
+                                    </div>
+                                    <div class="" style="margin-left:4em ">
+                                        <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
+                                    </div>
 
 
-                                            <div class="form-group row w-100 m-1">
-                                                <label class="col-form-label col-sm-4 text-center">Email</label>
-                                                <div class="col-8">
-                                                    <input name="email" th:value="${user.email}" type="text"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
+                                </div>
+                                <hr>
+
+                                <ul class="list-unstyled components">
+                                    <li><a href="/task" class="active">Home</a></li>
+
+                                    <li><a href="/profile">Profile</a></li>
+
+                                    <li><a href="/about">About</a></li>
+
+                                    <li>
+                                        <a href="/task">Manage Tasks</a>
+                                    </li>
+                                </ul>
 
 
-                                            <div class="form-group row w-100 m-1    ">
-                                                <label class="col-form-label col-sm-4 text-center">password</label>
-                                                <div class="col-8">
-                                                    <input name="password" type="text" class="form-control">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row w-100 m-1 invisible">
-                                                <label class="col-form-label col-sm-4 text-center">Id</label>
-                                                <div class="col-8">
-                                                    <input name="id" th:value="${user.id}" readonly type="number"
-                                                           class="form-control">
-                                                </div>
-                                            </div>
-
-
-                                            <div class="text-center m-1">
-                                                <button class="btn btn-primary">update</button>
-
-                                            </div>
+                                <ul>
+                                    <!-- More links here... -->
+                                    <li class="text-white" style="list-style: none">
+                                        <form class="ms-0" th:action="@{/logout}" th:method="post">
+                                            <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
                                         </form>
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
 
 
-                                <div class="col-md-6 col-sm-11 mt-3">
+
+                            </nav>
+
+                        </div>
 
 
-                                    <div class="card ">
-                                        <div class="card-header text-center">
-                                            <h5>Tasks summary</h5>
+                        <!-- *************************** ***************************************************************************-->
+
+                        <div id="main-content" class="col-md-8 col-lg-8 col-xl-8 col-sm-12 ms-md-1 ms-lg-1 ">
+                            <div  class="row text-center justify-content-around" style="width: 100%">
+
+
+
+                                    <div class="col-md-6 col-sm-11 mt-3">
+                                        <div class="card">
+
+                                            <div class="card-header text-center"><h5> User Details</h5></div>
+
+                                            <form th:action="@{/updateUser}" method="POST">
+
+
+                                                <div class="form-group row w-100 m-1">
+                                                    <label class="col-form-label col-sm-4 text-center">First name</label>
+                                                    <div class="col-8">
+                                                        <input name="firstName" th:value="${user.firstName}"
+                                                               class="form-control" size="16"
+                                                               type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row w-100 m-1">
+                                                    <label class="col-form-label col-sm-4 text-center"> Last name</label>
+                                                    <div class="col-8">
+                                                        <input name="lastName" th:value="${user.lastName}" type="text"
+                                                               class=" form-control"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row w-100 m-1">
+                                                    <label class="col-form-label col-sm-4 text-center">Username</label>
+                                                    <div class="col-8">
+                                                        <input name="username" th:value="${user.username}" type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row w-100 m-1">
+                                                    <label class="col-form-label col-sm-4 text-center">Email</label>
+                                                    <div class="col-8">
+                                                        <input name="email" th:value="${user.email}" type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row w-100 m-1    ">
+                                                    <label class="col-form-label col-sm-4 text-center">password</label>
+                                                    <div class="col-8">
+                                                        <input name="password" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row w-100 m-1 invisible">
+                                                    <label class="col-form-label col-sm-4 text-center">Id</label>
+                                                    <div class="col-8">
+                                                        <input name="id" th:value="${user.id}" readonly type="number"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="text-center m-1">
+                                                    <button class="btn btn-primary">update</button>
+
+                                                </div>
+                                            </form>
                                         </div>
-                                        <table class="table  table-advance ">
-                                            <thead>
-                                            <tr>
-
-                                                <th><i class="icon_profile"></i> Status</th>
-                                                <th><i class="icon_cogs"></i>Total</th>
-                                                <th><i class="icon_profile"></i>Action</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody class="text-white">
-                                            <tr>
-                                                <td><i class="fa fa-table">Completed</i></td>
-                                                <td th:text="${completed}"><i class="fa fa-table"></i></td>
-                                                <td><i class="fa fa-table"></i><a
-                                                        th:href="@{/status/{status}(status= completed)}"
-                                                        class="btn btn-outline-light">View</a></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-table">Scheduled</i></td>
-                                                <td th:text="${scheduled}"><i class="fa fa-table"></i></td>
-                                                <td><i class="fa fa-table"></i><a
-                                                        th:href="@{/status/{status}(status= scheduled)}"
-                                                        class="btn btn-outline-light">View</a></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fa fa-table"></i>Pending</td>
-                                                <td th:text="${pending}"><i class="fa fa-table"></i></td>
-                                                <td><i class="fa fa-table"></i><a
-                                                        th:href="@{/status/{status}(status= pending)}"
-                                                        class="btn btn-outline-light">View</a></td>
-
-                                            </tr>
+                                    </div>
 
 
-                                            <tr>
-                                                <td><i class="fa fa-table"></i>Total</td>
-                                                <td th:text="${all}"><i class="fa fa-table"></i></td>
-                                                <td><i class="fa fa-table"></i><a
-                                                        th:href="@{/task}"
-                                                        class="btn btn-outline-light">View</a></td>
-
-                                            </tr>
+                                    <div class="col-md-6 col-sm-11 mt-3">
 
 
+                                        <div class="card ">
+                                            <div class="card-header text-center">
+                                                <h5>Tasks summary</h5>
+                                            </div>
+                                            <table class="table  table-advance ">
+                                                <thead>
+                                                <tr>
+
+                                                    <th><i class="icon_profile"></i> Status</th>
+                                                    <th><i class="icon_cogs"></i>Total</th>
+                                                    <th><i class="icon_profile"></i>Action</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody class="text-white">
+                                                <tr>
+                                                    <td><i class="fa fa-table">Completed</i></td>
+                                                    <td th:text="${completed}"><i class="fa fa-table"></i></td>
+                                                    <td><i class="fa fa-table"></i><a
+                                                            th:href="@{/status/{status}(status= completed)}"
+                                                            class="btn btn-outline-light">View</a></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-table">Scheduled</i></td>
+                                                    <td th:text="${scheduled}"><i class="fa fa-table"></i></td>
+                                                    <td><i class="fa fa-table"></i><a
+                                                            th:href="@{/status/{status}(status= scheduled)}"
+                                                            class="btn btn-outline-light">View</a></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><i class="fa fa-table"></i>Pending</td>
+                                                    <td th:text="${pending}"><i class="fa fa-table"></i></td>
+                                                    <td><i class="fa fa-table"></i><a
+                                                            th:href="@{/status/{status}(status= pending)}"
+                                                            class="btn btn-outline-light">View</a></td>
+
+                                                </tr>
 
 
-                                            </tbody>
-                                        </table>
+                                                <tr>
+                                                    <td><i class="fa fa-table"></i>Total</td>
+                                                    <td th:text="${all}"><i class="fa fa-table"></i></td>
+                                                    <td><i class="fa fa-table"></i><a
+                                                            th:href="@{/task}"
+                                                            class="btn btn-outline-light">View</a></td>
+
+                                                </tr>
+
+
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
 
                                     </div>
 
                                 </div>
+
+
 
                             </div>
 
 
-                            <!--*****************End of card section******************--->
                         </div>
 
 
                     </div>
+
+
                 </div>
 
-            </section>
-            <!-- Section: Design Block -->
+
+                <!--*****************End of card section******************--->
 
 
-        </main><!-- End #main -->
 
 
-        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
 
-        <div id="preloader">
-            <div class="line"></div>
-        </div>
+        </section>
+        <!-- Section: Design Block -->
 
 
+    </main><!-- End #main -->
+
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader">
+        <div class="line"></div>
     </div>
+
+
 </div>
+
 
 
 <!-- Vendor JS Files -->
@@ -365,6 +387,7 @@
 <script src="/vendor/glightbox/js/glightbox.min.js"></script>
 <script src="/vendor/aos/aos.js"></script>
 <script src="/vendor/php-email-form/validate.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -382,15 +405,12 @@
 <!-- jQuery Custom Scroller CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="/js/main.js"></script>
 <script src="/js/task.js"></script>
 <script src="/js/apiKey.js"></script>
 <script src="/js/filePicker.js"></script>
-
-
 
 </body>
 
