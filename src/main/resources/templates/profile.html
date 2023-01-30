@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>profile</title>
+    <title>Profile</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -174,26 +174,24 @@
                                 <hr>
 
                                 <ul class="list-unstyled components">
-                                    <li><a href="/task" class="active">Home</a></li>
+                                    <li><a href="/task" class="active">My tasks</a></li>
 
                                     <li><a href="/profile">Profile</a></li>
 
                                     <li><a href="/about">About</a></li>
 
-                                    <li>
-                                        <a href="/task">Manage Tasks</a>
-                                    </li>
+
                                 </ul>
 
 
-                                <ul>
+
                                     <!-- More links here... -->
-                                    <li class="text-white" style="list-style: none">
-                                        <form class="ms-0" th:action="@{/logout}" th:method="post">
+                                    <div class="text-white " style="list-style: none">
+                                        <form class="text-center" th:action="@{/logout}" th:method="post">
                                             <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
                                         </form>
-                                    </li>
-                                </ul>
+                                    </div>
+
 
 
 
@@ -218,7 +216,7 @@
 
 
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 text-center">First name</label>
+                                                    <label class="col-form-label col-sm-4">First name</label>
                                                     <div class="col-8">
                                                         <input name="firstName" th:value="${user.firstName}"
                                                                class="form-control" size="16"
@@ -226,14 +224,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 text-center"> Last name</label>
+                                                    <label class="col-form-label col-sm-4 "> Last name</label>
                                                     <div class="col-8">
                                                         <input name="lastName" th:value="${user.lastName}" type="text"
                                                                class=" form-control"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 text-center">Username</label>
+                                                    <label class="col-form-label col-sm-4 ">Username</label>
                                                     <div class="col-8">
                                                         <input name="username" th:value="${user.username}" type="text"
                                                                class="form-control">
@@ -242,7 +240,7 @@
 
 
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 text-center">Email</label>
+                                                    <label class="col-form-label col-sm-4 ">Email</label>
                                                     <div class="col-8">
                                                         <input name="email" th:value="${user.email}" type="text"
                                                                class="form-control">
@@ -250,15 +248,15 @@
                                                 </div>
 
 
-                                                <div class="form-group row w-100 m-1    ">
-                                                    <label class="col-form-label col-sm-4 text-center">password</label>
+                                                <div class="form-group row w-100 m-1 ">
+                                                    <label class="col-form-label col-sm-4 ">Password</label>
                                                     <div class="col-8">
-                                                        <input name="password" type="text" class="form-control">
+                                                        <input name="password" type="password" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group row w-100 m-1 invisible">
-                                                    <label class="col-form-label col-sm-4 text-center">Id</label>
+                                                    <label class="col-form-label col-sm-4 ">Id</label>
                                                     <div class="col-8">
                                                         <input name="id" th:value="${user.id}" readonly type="number"
                                                                class="form-control">
@@ -267,7 +265,7 @@
 
 
                                                 <div class="text-center m-1">
-                                                    <button class="btn btn-primary">update</button>
+                                                    <button class="btn btn-primary">Update</button>
 
                                                 </div>
                                             </form>
