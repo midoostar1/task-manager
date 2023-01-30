@@ -146,12 +146,14 @@
 
                             <div class="row mt-5 gx-0" style="height: 100vh; width: 100vw; ">
 
-                                <!--************************************************************************************************-->
+
+
+                                <!--**************************************************SideBar Start**********************************************-->
 
 
                                 <div id="sidebar" class="col-md-3 col-lg-3 col-xl-3 col-sm-12 me-md-4 me-lg-4" style="z-index: 1; border: 0.01em solid #6973b6; border-radius: 5px   ">
 
-                                    <!--                                     Sidebar -->
+                                                                         Sidebar -->
                                     <nav  class="p-2" style="margin-left: 0;">
 
                                         <div id="userProfilePic" class="avatar avatar-lg text-center">
@@ -246,10 +248,13 @@
                                 </div>
 
 
-                                <!-- *************************** ***************************************************************************-->
+                                <!-- *************************** ***********************SideBar End****************************************************-->
+
+
+<!--                                **************************************Task card start-->
 
                                 <div id="main-content" class="col-md-8 col-lg-8 col-xl-8 col-sm-12 ms-md-1 ms-lg-1 ">
-                                    <div  class="row text-center justify-content-around" style="width: 100%">
+                                    <div  class="row text-center justify-content-around g-0" style="width: 100%">
 
 
                                         <div class="alert alert-danger m-3" role="alert" th:text="${notask}"
@@ -257,9 +262,9 @@
 
 
                                         <div th:each="task:${tasks}"
-                                             class="card text-center col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-1 my-1"
+                                             class="card text-center col-lg-5 col-md-5 col-sm-12 col-xs-12 mx-1 my-2"
                                              style="">
-                                            <div class="card-header bg-glass">
+                                            <div class="card-header bg-glass w-100 p-1">
                                                 <h5 style="color: hsl(97,86%,36%)" th:if="${task.isCompleted() == true}"
                                                     th:text="Completed"></h5>
                                                 <h5 style="color: hsl(52,78%,67%)" th:if="${task.isScheduled() == true}"
@@ -268,7 +273,7 @@
                                                     th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}"
                                                     th:text="Pending"></h5>
                                             </div>
-                                            <div class="card-body">
+                                            <div  class="card-body p-1">
                                                 <h3 th:if="${task.isCompleted() == true}" th:text="${task.getName()}"
                                                     class="text-decoration-line-through"></h3>
                                                 <h3 th:if="${task.isCompleted() == false}"
@@ -308,32 +313,32 @@
                                                 <!--                         **********************************                   -->
 
 
-                                                <div class="action row justify-content-center" style="font-size: smaller">
+                                                <div class="action row justify-content-around g-0" style="font-size: 0.5em; margin: 0 auto 0 auto">
 
-                                                    <div th:if="${task.isCompleted() == false}" class="col-6 ">
-                                                        <a th:href="@{/completeTask/{id}(id=${task.id})}"
-                                                           class="btn btn-outline-success">Complete</a>
-
-                                                    </div>
-
-
-                                                    <div th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}"
-                                                         class="col-6 ">
-                                                        <a th:href="@{/scheduleTask/{id}(id=${task.id})}"
-                                                           class="btn btn-outline-warning">Schedule</a>
+                                                    <div  th:if="${task.isCompleted() == false}" class="col-6 p-1">
+                                                        <a style="width: 6em; padding: 1px" th:href="@{/completeTask/{id}(id=${task.id})}"
+                                                           class="btn btn-outline-success ">Complete</a>
 
                                                     </div>
 
-                                                    <div th:if="${task.isCompleted() == false}" class="col-6">
-                                                        <a th:href="@{/updateTask/{id}(id=${task.id})}"
-                                                           class="btn btn-outline-light">Update</a>
+
+                                                    <div  th:if="${task.isScheduled() == false} and ${task.isCompleted() == false}"
+                                                         class="col-6 p-1">
+                                                        <a style="width: 6em; padding: 1px" th:href="@{/scheduleTask/{id}(id=${task.id})}"
+                                                           class="btn btn-outline-warning ">Schedule</a>
+
+                                                    </div>
+
+                                                    <div  th:if="${task.isCompleted() == false}" class="col-6 p-1">
+                                                        <a style="width: 6em; padding: 1px" th:href="@{/updateTask/{id}(id=${task.id})}"
+                                                           class="btn btn-outline-light ">Update</a>
                                                     </div>
 
 
-                                                    <div class="col-6 ">
-                                                        <a onclick="return confirm('Are you sure you want delete?')"
+                                                    <div  class="col-6 p-1">
+                                                        <a style="width: 6em; padding: 1px" onclick="return confirm('Are you sure you want delete?')"
                                                            th:href="@{/deleteTask/{id}(id=${task.id})}"
-                                                           class="btn btn-outline-danger"><i
+                                                           class="btn btn-outline-danger "><i
                                                                 class="icon_close_alt2"></i>Delete</a>
 
                                                     </div>
