@@ -41,15 +41,19 @@ a:focus {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+
     background: #1c223a;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar.active {
-    margin-left: -250px;
+        margin-left: -400px;
+    }
+#main-content.active{
+    margin: 0 auto;
+    width: 100vw;
+    align-content: center;
 }
 
 #sidebar .sidebar-header {
@@ -131,7 +135,7 @@ a.article:hover {
 
 #content {
     width: 100%;
-    padding: 20px;
+
     min-height: 100vh;
     transition: all 0.3s;
 }
@@ -142,12 +146,19 @@ a.article:hover {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -48em;
     }
     #sidebar.active {
         margin-left: 0;
     }
     #sidebarCollapse span {
         display: none;
+    }
+
+    #main-content{
+justify-content: center;
+      margin: 0 0 0 auto;
+        width: auto;
+        padding-left: 1em;
     }
 }
