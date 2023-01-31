@@ -158,14 +158,14 @@
 
                                 </div>
 
-                                <div id="userProfilePic" class="avatar avatar-lg">
+                                <div id="userProfilePic" class="avatar avatar-lg text-center">
 
 
-                                    <div class="" style="margin-left:5em " >
+                                    <div class=""  >
                                         <img id="p-img" class="avatar-img  border  border-3 ms"
                                              th:src="${user.profilePhoto}" alt="" style="width: 5em; height: 5em;">
                                     </div>
-                                    <div class="" style="margin-left:4em ">
+                                    <div class="">
                                         <h5 class="p-2 mx-auto" th:text="${user.firstName}+' '+${user.lastName}" ></h5>
                                     </div>
 
@@ -174,7 +174,7 @@
                                 <hr>
 
                                 <ul class="list-unstyled components">
-                                    <li><a href="/task" class="active">My tasks</a></li>
+                                    <li><a href="/task" class="active">My Tasks</a></li>
 
                                     <li><a href="/profile">Profile</a></li>
 
@@ -186,9 +186,9 @@
 
 
                                     <!-- More links here... -->
-                                    <div class="text-white " style="list-style: none">
+                                    <div class="text-white" style="list-style: none">
                                         <form class="text-center" th:action="@{/logout}" th:method="post">
-                                            <button class="btn btn-outline-light" style="margin: 10px 0 0 3em; ">Logout</button>
+                                            <button class="btn btn-outline-light" >Logout</button>
                                         </form>
                                     </div>
 
@@ -207,31 +207,31 @@
 
 
 
-                                    <div class="col-md-6 col-sm-11 mt-3">
+                                    <div class="col-md-7 col-sm-11 mt-3">
                                         <div class="card">
 
-                                            <div class="card-header text-center"><h5> User Details</h5></div>
+                                            <div class="card-header text-center"><h5 class="p-1"> User Details</h5></div>
 
                                             <form th:action="@{/updateUser}" method="POST">
 
 
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4">First name</label>
-                                                    <div class="col-8">
+                                                    <label class="col-form-label col-sm-3">First Name</label>
+                                                    <div class="col-8 ">
                                                         <input name="firstName" th:value="${user.firstName}"
-                                                               class="form-control" size="16"
+                                                               class="form-control pe-1" size="16"
                                                                type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 "> Last name</label>
+                                                    <label class="col-form-label col-sm-3 "> Last Name</label>
                                                     <div class="col-8">
                                                         <input name="lastName" th:value="${user.lastName}" type="text"
                                                                class=" form-control"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 ">Username</label>
+                                                    <label class="col-form-label col-sm-3 ">Username</label>
                                                     <div class="col-8">
                                                         <input name="username" th:value="${user.username}" type="text"
                                                                class="form-control">
@@ -240,7 +240,7 @@
 
 
                                                 <div class="form-group row w-100 m-1">
-                                                    <label class="col-form-label col-sm-4 ">Email</label>
+                                                    <label class="col-form-label col-sm-3 ">Email</label>
                                                     <div class="col-8">
                                                         <input name="email" th:value="${user.email}" type="text"
                                                                class="form-control">
@@ -249,7 +249,7 @@
 
 
                                                 <div class="form-group row w-100 m-1 ">
-                                                    <label class="col-form-label col-sm-4 ">Password</label>
+                                                    <label class="col-form-label col-sm-3 ">Password</label>
                                                     <div class="col-8">
                                                         <input name="password" type="password" class="form-control">
                                                     </div>
@@ -264,8 +264,8 @@
                                                 </div>
 
 
-                                                <div class="text-center m-1">
-                                                    <button class="btn btn-primary">Update</button>
+                                                <div class="text-center mb-2">
+                                                    <button class="btn btn-primary mb-1">Update</button>
 
                                                 </div>
                                             </form>
@@ -273,12 +273,12 @@
                                     </div>
 
 
-                                    <div class="col-md-6 col-sm-11 mt-3">
+                                    <div class="col-md-5 col-sm-11 mt-3">
 
 
                                         <div class="card ">
                                             <div class="card-header text-center">
-                                                <h5>Tasks summary</h5>
+                                                <h5 class="p-1">Tasks Summary</h5>
                                             </div>
                                             <table class="table  table-advance ">
                                                 <thead>

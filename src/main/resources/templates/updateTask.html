@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Update task</title>
+    <title>Update Task</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -141,7 +141,7 @@
                         <div class="card-body px-4 py-5 px-md-5">
 
                             <div class="text-center mb-4">
-                                <h4>Update task</h4>
+                                <h4>Update Task</h4>
                                 <hr class="text-white">
                                 <div class="alert alert-danger m-3" role="alert" th:text="${pastDate}" th:if="${pastDate}"></div>
 
@@ -164,9 +164,10 @@
                                     </div>
 
                                     <div th:if="${task.isScheduled() == true}" class="form-outline mb-4">
-                                        <label class="form-label" style="margin: 0 auto"  for="date">Due date</label>
 
                                         <input th:value="${task.dueDate}" type="date" required th:name="date"  id="date" class="form-control" />
+                                        <label class="form-label" style="margin: 0 auto"  for="date">Due Date</label>
+
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -184,25 +185,22 @@
                                     </div>
 
 
-
-                                    <div class="form-outline mb-4 invisible">
-                                        <input type="number" required th:name="id" id="id" th:value="${task.getId()}" class="form-control" />
-                                        <label class="form-label"  for="id">id</label>
-                                    </div>
-
-
-                                    <div th:if="${task.isScheduled() == false}" class="form-outline mb-4 invisible">
+                                    <div th:if="${task.isScheduled() == false}" class="form-outline invisible">
                                         <label class="form-label" style="margin: 0 auto"  for="date1">Due date</label>
 
                                         <input type="date" th:name="date"  id="date1" class="form-control" />
                                     </div>
+<div class="d-none">
+                                    <input type="number" required th:name="id" id="id" th:value="${task.getId()}" class="form-control " />
+                                    <label class="form-label "  for="id">id</label>
 
-
+</div>
                                     <!-- Submit button -->
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                    <div class="form-outline mb-4">
+                                    <button style="width: 100%" type="submit" class="btn btn-primary btn-block mb-4">
                                         Submit
                                     </button>
-
+                                    </div>
                                     <!-- Register buttons -->
 
                                 </div>

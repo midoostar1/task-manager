@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Create task</title>
+    <title>Create Task</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -98,7 +98,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="/task" class="active">Home</a></li>
+
                 <li><a href="/about">About</a></li>
 
             </ul>
@@ -140,8 +140,8 @@
                         <div class="card-body px-4 py-5 px-md-5">
 
                             <div class="text-center mb-4">
-                                <h4>Create task</h4>
-
+                                <h4>Create Task</h4>
+                                <hr class="text-white">
                                 <div class="alert alert-danger m-3" role="alert" th:text="${invalid}" th:if="${invalid}"></div>
 
                             </div>
@@ -178,10 +178,11 @@
 
 
                                     <!-- Submit button -->
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                    <div class="form-outline mb-4">
+                                    <button style="width: 100%" type="submit" class="btn btn-primary mb-4">
                                        Submit
                                     </button>
-
+                                    </div>
                                     <!-- Register buttons -->
 
                                 </div>
