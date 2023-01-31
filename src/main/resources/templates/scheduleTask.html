@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Create task</title>
+    <title>Schedule Task</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -74,7 +74,7 @@
 
     </style>
 
-<title>Schedule task</title>
+
     <!-- =======================================================
     * Template Name: PhotoFolio - v1.2.0
     * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
@@ -98,7 +98,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="/task" class="active">Home</a></li>
+
                 <li><a href="/about">About</a></li>
 
             </ul>
@@ -140,7 +140,7 @@
                         <div class="card-body px-4 py-5 px-md-5">
 
                             <div class="text-center mb-4">
-                                <h4 style="color: hsl(218, 81%, 75%)">Schedule task</h4>
+                                <h4 style="color: hsl(218, 81%, 75%)">Schedule Task</h4>
 
                                 <hr class="text-white">
                                 <div class="alert alert-danger m-3" role="alert" th:text="${pastDate}" th:if="${pastDate}"></div>
@@ -170,19 +170,20 @@
 
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" style="margin: 0 auto"  for="date">Set due date</label>
+                                        <label class="form-label" style="margin: 0 auto"  for="date">Set Due Date</label>
 
                                         <input type="date" required th:name="date"  id="date" class="form-control" />
                                     </div>
 
                                     <!-- Submit button -->
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        <div class="form-outline mb-4">
+                                    <button style="width: 100%" type="submit" class="btn btn-primary btn-block mb-4">
                                         Submit
                                     </button>
 
                                     <!-- Register buttons -->
 
-
+                                        </div>
                             </form>
                         </div>
                     </div>
