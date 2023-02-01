@@ -62,6 +62,7 @@ public class TaskController {
 
     @PostMapping("/createTask")
     public String create(
+            Model model,
             @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("category") String category) {
@@ -69,6 +70,10 @@ public class TaskController {
         User user = loggedInUser();
         Category category1 = categoryService.findByName(category);
         LocalDate createdDate = LocalDate.now();
+        if(taskService.findByNameAndUser(name,user)!= null){
+         model.addAttribute("exist", "you already have a task with this name.");
+            return "createTask";
+        }
 
         Task task = new Task(name, description, false, false, category1, createdDate, user);
         taskService.save(task);
