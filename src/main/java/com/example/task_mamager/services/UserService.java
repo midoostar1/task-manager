@@ -21,4 +21,8 @@ public class UserService {
     public User findById(long id) {
         return userDao.findById(id).get();
     }
+
+    public User findByUsername(String username) {
+        return (User) userDao.findByUsername(username);
+    }
 }

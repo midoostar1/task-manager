@@ -23,4 +23,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
   List<Task> findByIsCompletedAndOwner(boolean b, User user);
 
   List<Task> findByIsCompletedAndIsScheduledAndOwner(boolean completed, boolean scheduled,User user);
+
+    Task findByNameAndOwner(String name, User user);
 }

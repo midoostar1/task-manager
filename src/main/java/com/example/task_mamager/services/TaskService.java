@@ -48,4 +48,7 @@ public List<Task>findByScheduled(boolean b, User user){
         return taskDao.findByIsCompletedAndIsScheduledAndOwner(b,b1,user);
     }
 
+    public Task findByNameAndUser(String name, User user) {
+        return taskDao.findByNameAndOwner(name, user);
+    }
 }

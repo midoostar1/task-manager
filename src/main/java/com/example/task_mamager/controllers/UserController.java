@@ -99,7 +99,10 @@ public class UserController {
             model.addAttribute("invalid", "Password must be 8 characters and above and must contain a special character and and at least 1 integer.");
                 return "register";
         }
-
+if(userService.findByUsername(user.getUsername()) != null){
+   model.addAttribute("taken", "This username is already taken.") ;
+    return "register";
+}
 
         String encodedPassword = passwordEncoder.encode(password);
         user.setPassword(encodedPassword);
