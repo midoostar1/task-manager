@@ -49,11 +49,15 @@ a:focus {
 
 #sidebar.active {
         margin-left: -400px;
+
     }
 #main-content.active{
-    margin: 0 auto;
+  padding-left: 5em;
     width: 100vw;
     align-content: center;
+
+
+
 }
 
 #sidebar .sidebar-header {
@@ -147,19 +151,41 @@ a.article:hover {
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -48em;
+
     }
     #sidebar.active {
-        margin-left: 0;
+        margin: 0 auto ;
+width: 95%;
+    }
+    #side-nav{
+
     }
     #sidebarCollapse span {
         display: none;
     }
 
+
     #main-content{
 justify-content: center;
       margin: 0 0 0 auto;
-        width: auto;
-        padding-left: 1em;
-        padding-right: 1em;
+
+       padding:0 .5em 0 .1em;
+
     }
+
+    #main-content.active {
+        justify-content: center;
+        margin: 0 0 0 auto;
+        padding: 0 1em;
+
+    }
+
+}
+
+@media (max-width: 1043px ) and (min-width: 777px ){
+    #main-content.active{
+        padding-left: 15em;
+
+
+}
 }

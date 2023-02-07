@@ -151,7 +151,7 @@
                                 <!--**************************************************SideBar Start**********************************************-->
 
 
-                                <div id="sidebar" class="col-md-3 col-lg-3 col-xl-3 col-sm-12 me-md-4 me-lg-4" style="z-index: 1; border: 0.01em solid #6973b6; border-radius: 5px   ">
+                                <div id="sidebar" class="col-md-3 col-lg-3 col-xl-3 col-sm-12 me-md-4 me-lg-4" style="z-index: 1; border: 0.01em solid #6973b6; border-radius: 5px ">
 
 
                                     <nav  class="p-2" style="margin-left: 0;">
@@ -180,9 +180,9 @@
                                             <li><a href="/about">About</a></li>
 
 
-                                            <li>
-                                                <a th:href="@{/showTaskForm}">Create Task</a>
-                                            </li>
+
+
+
 
                                             <li class="active">
                                                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
@@ -253,10 +253,12 @@
 
 <!--                                **************************************Task card start-->
 
-                                <div id="main-content" class="col-md-8 col-lg-8 col-xl-8 col-sm-12 ms-md-1 ms-lg-1 ">
+                                <div id="main-content" class="col-md-8 col-lg-8 col-xl-8 col-sm-12 ms-md-1 ms-lg-1 text-center">
                                     <div  class="row text-center justify-content-around g-0" style="width: 100%">
 
-
+                                        <div class="col-12 text-center mt-1 mb-1">
+                                            <a style="width: 50%" th:href="@{/showTaskForm}" class="btn btn-outline-light">Create Task</a>
+                                        </div>
                                         <div class="alert alert-danger m-3" role="alert" th:text="${notask}"
                                              th:if="${notask}"></div>
 
